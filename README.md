@@ -1,5 +1,7 @@
 # React + TypeScript + Vite
 
+# Buscador de Bebidas - API - React Router - Tailwind - Zustand, Zod y más
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
