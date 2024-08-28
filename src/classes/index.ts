@@ -1,4 +1,4 @@
-import { IntCategoria } from "../interfaces";
+import { IntCategoria, IntTrago } from "../interfaces";
 
 class Categoria implements IntCategoria {
     codigo: string;
@@ -11,6 +11,19 @@ class Categoria implements IntCategoria {
 
 }
 
+class Trago implements IntTrago {
+    id: string;
+    desc: string;
+    imagen: string;
+
+    constructor(id: string = "", desc: string = "", imagen: string = "") {
+        this.id = id;
+        this.desc = desc;
+        this.imagen = imagen
+    }
+}
+
 export {
-    Categoria
+    Categoria,
+    Trago
 }
