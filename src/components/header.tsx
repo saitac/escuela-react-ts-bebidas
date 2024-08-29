@@ -15,7 +15,7 @@ const Header = () => {
     const isHome = useMemo(()=> pathname === "/" , [pathname]);
 
     const getCategorias = useAppStore( (state) => state.getCategorias);
-    const getRecetas = useAppStore( (state) => state.getTragos )
+    const getTragos = useAppStore( (state) => state.getTragos )
     const categorias: Categoria[] = useAppStore( (state) => state.categorias)
 
     useEffect( () =>{
@@ -39,7 +39,7 @@ const Header = () => {
         }
 
         // Consultar las recetas
-        getRecetas(filtroBusqueda);
+        getTragos(filtroBusqueda);
 
     }
 
