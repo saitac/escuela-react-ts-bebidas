@@ -10,11 +10,50 @@ const SchemaDrink = z.object({
     idDrink: z.string(),
     strDrink: z.string(),
     strDrinkThumb: z.string()
-})
+});
 
-const SchemaDrinks = z.array(SchemaDrink)
+const SchemaDrinks = z.array(SchemaDrink);
+
+const SchemaRecipe = z.object({
+    idDrink: z.string(),
+    strDrink: z.string(),
+    strIngredient1: z.string().nullable(),
+    strIngredient2: z.string().nullable(),
+    strIngredient3: z.string().nullable(),
+    strIngredient4: z.string().nullable(),
+    strIngredient5: z.string().nullable(),
+    strIngredient6: z.string().nullable(),
+    strIngredient7: z.string().nullable(),
+    strIngredient8: z.string().nullable(),
+    strIngredient9: z.string().nullable(),
+    strIngredient10: z.string().nullable(),
+    strIngredient11: z.string().nullable(),
+    strIngredient12: z.string().nullable(),
+    strIngredient13: z.string().nullable(),
+    strIngredient14: z.string().nullable(),
+    strIngredient15: z.string().nullable(),
+    strMeasure1: z.string().nullable(),
+    strMeasure2: z.string().nullable(),
+    strMeasure3: z.string().nullable(),
+    strMeasure4: z.string().nullable(),
+    strMeasure5: z.string().nullable(),
+    strMeasure6: z.string().nullable(),
+    strMeasure7: z.string().nullable(),
+    strMeasure8: z.string().nullable(),
+    strMeasure9: z.string().nullable(),
+    strMeasure10: z.string().nullable(),
+    strMeasure11: z.string().nullable(),
+    strMeasure12: z.string().nullable(),
+    strMeasure13: z.string().nullable(),
+    strMeasure14: z.string().nullable(),
+    strMeasure15: z.string().nullable(),
+    strInstructions: z.string(),
+});
+
+const SchemaRecipes = z.array(SchemaRecipe);
 
 export {
     SchemaCategories,
-    SchemaDrinks
+    SchemaDrinks,
+    SchemaRecipes
 }
