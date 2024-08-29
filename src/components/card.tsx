@@ -10,14 +10,16 @@ const Card = ({trago}: CardProps) => {
         <div
             className="max-w-sm bg-white border border-gray-200 rounded-lg shadow"
         >
-            <img className="rounded-t-lg" src={trago.imagen} alt="" />
+            <div className="overflow-hidden">
+                <img className="rounded-t-lg hover:scale-125 transition-transform hover: rotate-2" src={trago.imagen} alt="" />
+            </div>
             <p
-                className="font-bold p-3"
+                className="font-bold p-3 truncate"
             >{trago.desc}</p>
             <div className="p-3">
-                <input type="button" value="Ver receta" 
-                    className="cursor-pointer bg-orange-500 hover:bg-orange-600 text-white font-bold w-full p-2"
-                />
+                <button type="button" value="" 
+                    className="cursor-pointer bg-orange-400 hover:bg-orange-500 text-white font-bold w-full p-2"
+                >Ver receta</button>
             </div>
         </div>
     )
