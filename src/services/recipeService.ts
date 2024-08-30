@@ -115,11 +115,14 @@ const getReceta = async (trago: Trago) => {
                         break;
                 }
 
+                //ingrediente = result.data[0][`strIngredient${i}` as keyof SchemaRecipe];
+                
+
                 ingrediente = ingrediente !== null ? ingrediente : "";
                 medida = medida !== null ? medida : "";
 
                 if (ingrediente || medida) {
-                    const ingre: Ingrediente = new Ingrediente(ingrediente, medida);
+                    const ingre: Ingrediente = new Ingrediente(i, ingrediente, medida);
                     ingres.push(ingre);
                 }
             }

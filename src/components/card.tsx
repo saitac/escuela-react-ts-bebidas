@@ -14,7 +14,6 @@ const Card = ({trago}: CardProps) => {
         getReceta(trago);
     }
 
-
     return(
         <div
             className="max-w-sm bg-white border border-gray-200 rounded-lg shadow"

@@ -10,6 +10,7 @@ interface IntTrago {
 }
 
 interface IntIngrediente {
+    id: number,
     desc: string,
     medida: string
 }

@@ -55,5 +55,6 @@ const SchemaRecipes = z.array(SchemaRecipe);
 export {
     SchemaCategories,
     SchemaDrinks,
+    SchemaRecipe,
     SchemaRecipes
 }

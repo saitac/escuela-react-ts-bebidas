@@ -3,13 +3,12 @@ import { Trago } from "../classes";
 import Card from "../components/card";
 import useAppStore from "../stores/useAppStore"
 
+
 const Root = () => {
 
     const tragos: Trago[] = useAppStore((state)=>state.tragos);
     const hasTragos = useMemo(() => tragos.length > 0 ,[tragos]);
-
-    console.log(hasTragos);
-
+    
     return(
         <section>
             {!hasTragos ? 

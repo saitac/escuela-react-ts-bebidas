@@ -24,10 +24,12 @@ class Trago implements IntTrago {
 }
 
 class Ingrediente implements IntIngrediente {
+    id: number;
     desc: string;
     medida: string;
 
-    constructor(desc: string = "", medida: string = ""){
+    constructor(id: number = 0, desc: string = "", medida: string = ""){
+        this.id = id;
         this.desc = desc;
         this.medida = medida
     }
