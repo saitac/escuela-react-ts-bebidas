@@ -1,30 +1,26 @@
 import {Dialog, DialogPanel, DialogTitle} from "@headlessui/react"
 import useAppStore from "../stores/useAppStore";
 import { Ingrediente, Receta } from "../classes";
-import { useMemo } from "react";
 
 const DialogReceta = () => {
 
+    const muestraDialogoReceta: boolean = useAppStore( (state) => state.muestraDialogoReceta )
+
     const closeDialogoReceta = useAppStore( (state) => state.closeDialogoReceta );
     const receta: Receta = useAppStore( (state) => state.receta );
+    
     const esFavorito = useAppStore( (state) => state.esFavorito );
-    const agregarFavorito = useAppStore( (state) => state.agregarFavorito );
-    const favorito: boolean = useMemo(()=> esFavorito(receta.trago) ,[receta]);
-
+    const handleFavorito = useAppStore( (state) => state.handleFavorito );
+    
     const favoritoHandle = () => {
-
-        if ( favorito ) {
-            console.log("Favorito")
-        } else {
-            agregarFavorito(receta.trago);
-        }
-
+        handleFavorito(receta.trago);
+        closeDialogoReceta();
     }
     
     return(
 
         <Dialog
-            open={true}
+            open={muestraDialogoReceta}
             onClose={() => closeDialogoReceta() }
             className="relative z-50"
         >
@@ -56,7 +52,7 @@ const DialogReceta = () => {
                         <button
                             className="w-full rounded bg-orange-600 p-2 font-bold uppercase text-white shadow hover:bg-orange-500" 
                             onClick={() => favoritoHandle()}
-                        >{!favorito ? "Agregar a favoritos" : "Eliminar Favorito"}</button>
+                        >{!esFavorito(receta.trago) ? "Agregar a favoritos" : "Eliminar Favorito"}</button>
                     </div>
                 </DialogPanel>
             </div>
