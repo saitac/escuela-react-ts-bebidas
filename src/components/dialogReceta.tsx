@@ -1,11 +1,25 @@
-import {Dialog, DialogPanel, Description, DialogTitle} from "@headlessui/react"
+import {Dialog, DialogPanel, DialogTitle} from "@headlessui/react"
 import useAppStore from "../stores/useAppStore";
 import { Ingrediente, Receta } from "../classes";
+import { useMemo } from "react";
 
 const DialogReceta = () => {
 
     const closeDialogoReceta = useAppStore( (state) => state.closeDialogoReceta );
     const receta: Receta = useAppStore( (state) => state.receta );
+    const esFavorito = useAppStore( (state) => state.esFavorito );
+    const agregarFavorito = useAppStore( (state) => state.agregarFavorito );
+    const favorito: boolean = useMemo(()=> esFavorito(receta.trago) ,[receta]);
+
+    const favoritoHandle = () => {
+
+        if ( favorito ) {
+            console.log("Favorito")
+        } else {
+            agregarFavorito(receta.trago);
+        }
+
+    }
     
     return(
 
@@ -14,9 +28,8 @@ const DialogReceta = () => {
             onClose={() => closeDialogoReceta() }
             className="relative z-50"
         >
-            {/* w-screen */}
-            <div className="fixed inset-0 flex w-screen  items-center justify-center p-4">
-                <DialogPanel className="max-w-lg space-y-4 border bg-white p-12">
+            <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
+                <DialogPanel className="max-w-lg space-y-2 border bg-white p-6">
                     <DialogTitle className="font-extrabold text-center">{receta.trago.desc}</DialogTitle>
                     <img
                         src={receta.trago.imagen}
@@ -37,13 +50,13 @@ const DialogReceta = () => {
                     <p className="text-sm">{receta.instrucciones}</p>
                     <div className="flex justify-between gap-4">
                         <button 
-                            className="w-full rounded bg-gray-600 p-3 font-bold uppercase text-white shadow hover:bg-gray-500"
+                            className="w-full rounded bg-gray-600 p-2 font-bold uppercase text-white shadow hover:bg-gray-500"
                             onClick={() => closeDialogoReceta()}
                         >Cerrar</button>
                         <button
-                            className="w-full rounded bg-orange-600 p-3 font-bold uppercase text-white shadow hover:bg-orange-500" 
-                            onClick={() => console.log("Deactivate")}
-                        >Agregar a favoritos</button>
+                            className="w-full rounded bg-orange-600 p-2 font-bold uppercase text-white shadow hover:bg-orange-500" 
+                            onClick={() => favoritoHandle()}
+                        >{!favorito ? "Agregar a favoritos" : "Eliminar Favorito"}</button>
                     </div>
                 </DialogPanel>
             </div>
