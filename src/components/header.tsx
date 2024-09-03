@@ -6,6 +6,8 @@ import { filtroBusqueda } from "../types";
 
 const Header = () => {
 
+    const showNotification = useAppStore((state) => state.showNotification);
+
     const [filtroBusqueda, setFiltroBusqueda] = useState<filtroBusqueda>({
         ingredient: "",
         category: new Categoria()
@@ -34,7 +36,7 @@ const Header = () => {
         e.preventDefault();
 
         if ( !filtroBusqueda.ingredient || !filtroBusqueda.category.codigo ) {
-            console.log("Todos los campos son obligatorios");
+            showNotification({text:"Todos los campos son obligatorios", error: true});
             return;
         }
 
